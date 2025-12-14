@@ -1,9 +1,30 @@
 pipeline {
-    agent { docker { image 'node:24.12.0-alpine3.23' } }
+    agent {
+        docker {
+            image 'node:24.12.0-alpine3.23'
+            args '-u root:root'
+        }
+    }
+
     stages {
-        stage('build') {
+        stage('Install Dependencies') {
             steps {
-                sh 'node --version'
+                echo 'Instalowanie pakietów...'
+                sh 'npm install'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Uruchamianie testów...'
+                sh 'npm test'
+            }
+        }
+
+        stage('Run App') {
+            steps {
+                echo 'Uruchamianie aplikacji...'
+                sh 'node index.js'
             }
         }
     }

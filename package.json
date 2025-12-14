@@ -1,0 +1,11 @@
+{
+  "name": "jenkins-demo",
+  "version": "1.0.0",
+  "description": "Prosty projekt pod Jenkinsa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Uruchamiam testy...\" && exit 0",
+    "start": "node index.js"
+  },
+  "dependencies": {}
+}
